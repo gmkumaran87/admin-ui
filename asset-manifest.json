@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/admin-ui/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/admin-ui/static/js/main.b1648559.chunk.js",
+    "main.js.map": "/admin-ui/static/js/main.b1648559.chunk.js.map",
+    "runtime-main.js": "/admin-ui/static/js/runtime-main.d887f55b.js",
+    "runtime-main.js.map": "/admin-ui/static/js/runtime-main.d887f55b.js.map",
+    "static/js/2.bfb1e94f.chunk.js": "/admin-ui/static/js/2.bfb1e94f.chunk.js",
+    "static/js/2.bfb1e94f.chunk.js.map": "/admin-ui/static/js/2.bfb1e94f.chunk.js.map",
+    "static/js/3.1b5aa0f7.chunk.js": "/admin-ui/static/js/3.1b5aa0f7.chunk.js",
+    "static/js/3.1b5aa0f7.chunk.js.map": "/admin-ui/static/js/3.1b5aa0f7.chunk.js.map",
+    "index.html": "/admin-ui/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/admin-ui/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.bfb1e94f.chunk.js.LICENSE.txt": "/admin-ui/static/js/2.bfb1e94f.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/admin-ui/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d887f55b.js",
+    "static/js/2.bfb1e94f.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.b1648559.chunk.js"
+  ]
+}
