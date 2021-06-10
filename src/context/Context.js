@@ -6,10 +6,12 @@ const AppContext = React.createContext();
 const initialState = {
   isLoading: false,
   userList: [],
-  filteredList: {},
+  filteredList: [],
   selectedUser: [],
   pagination: {},
   currPage: 1,
+  checkAll: false,
+  inputValue: "",
 };
 
 const URL =
@@ -35,8 +37,13 @@ function Context({ children }) {
     dispatch({ type: "LOAD_USERS", payload: state.userList });
   }, [state.userList]);
 
+  const filterUsers = (data) => {
+    // console.log(`data`, data);
+    dispatch({ type: "FILTER_USERS", payload: data });
+  };
+  const selectAllUsersPage = (page) => {};
+
   const loadSelectedUsers = (id, checked) => {
-    console.log(`list`, id, checked);
     if (checked) {
       dispatch({ type: "LOAD_SELECTED", payload: id });
     } else {
@@ -45,6 +52,8 @@ function Context({ children }) {
   };
   const removeSelected = () => {
     dispatch({ type: "REMOVE_SELECTED" });
+    const checkBoxAll = document.getElementById("checkBox-all");
+    if (checkBoxAll.checked) checkBoxAll.checked = false;
   };
 
   const handlePage = (item) => {
@@ -94,6 +103,10 @@ function Context({ children }) {
     dispatch({ type: "REMOVE_ITEM", payload: String(id) });
   };
 
+  const setInputValue = (value) => {
+    dispatch({ type: "SHOW_INPUT", payload: value });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -102,6 +115,9 @@ function Context({ children }) {
         removeItem,
         removeSelected,
         loadSelectedUsers,
+        selectAllUsersPage,
+        filterUsers,
+        setInputValue,
       }}
     >
       {children}{" "}

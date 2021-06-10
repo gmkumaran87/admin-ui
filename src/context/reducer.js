@@ -17,9 +17,25 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "LOADING":
             return {...state, isLoading: true };
+        case "SHOW_INPUT":
+            return {...state, inputValue: action.payload };
         case "LOAD_USERS":
             const pages = paginate(action.payload);
-            return {...state, userList: action.payload, pagination: pages };
+            return {
+                ...state,
+                userList: action.payload,
+                pagination: pages,
+            };
+        case "FILTER_USERS":
+            const filteredPages = paginate(action.payload);
+            console.log(`filteredPages`, filteredPages);
+            return {
+                ...state,
+                filteredList: action.payload,
+                pagination: filteredPages,
+                currPage: 1,
+            };
+
         case "SET_PAGE":
             return {...state, currPage: action.payload };
         case "REMOVE_ITEM":
@@ -38,15 +54,24 @@ const reducer = (state, action) => {
                 (user) => user !== action.payload
             );
             console.log(`unSelect`, unSelect);
-            return {...state, selectedUser: unSelect };
+            return {
+                ...state,
+                selectedUser: unSelect,
+            };
 
         case "REMOVE_SELECTED":
             console.log(`state.selectedUser`, state.selectedUser);
+            console.log(`state.selectedUser`, state.userList);
             const removeSelected = state.userList.filter(
                 (el) => !state.selectedUser.includes(el.id)
             );
             console.log(`removeSelected`, removeSelected);
-            return {...state, userList: removeSelected, selectedUser: [] };
+            return {
+                ...state,
+                userList: removeSelected,
+                selectedUser: [],
+                inputValue: "",
+            };
         default:
             throw new Error("no matching action type");
     }

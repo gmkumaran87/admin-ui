@@ -8,12 +8,17 @@ function TableList(props) {
   const { loadSelectedUsers } = useGlobalContext();
 
   const handleClick = (e) => {
-    loadSelectedUsers(e.currentTarget.id, e.currentTarget.checked);
+    loadSelectedUsers(e.currentTarget.value, e.currentTarget.checked);
   };
   return (
     <tr>
       <td>
-        <input type="checkbox" value={id} id={id} onChange={handleClick} />
+        <input
+          type="checkbox"
+          value={id}
+          id={`chckBox-${id}`}
+          onChange={handleClick}
+        />
       </td>
       <td> {name} </td> <td> {email} </td> <td> {role} </td>
       <td>

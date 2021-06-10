@@ -1,11 +1,28 @@
 import React, { useState } from "react";
 import "./Form.css";
+import { useGlobalContext } from "../context/Context";
 
 function Form() {
-  const [inputValue, setInputValue] = useState("");
+  const { userList, filterUsers, inputValue, setInputValue } =
+    useGlobalContext();
 
   const handleOnchange = (e) => {
     const input = e.target.value;
+
+    const filteredList = userList.filter((list) => {
+      const name = list.name.toLocaleLowerCase();
+      const email = list.email.toLocaleLowerCase();
+      const role = list.role.toLocaleLowerCase();
+
+      return (
+        name.startsWith(input) ||
+        email.startsWith(input) ||
+        role.startsWith(input)
+      );
+    });
+
+    console.log(`filteredList`, filteredList);
+    filterUsers(filteredList);
 
     setInputValue(input);
   };
