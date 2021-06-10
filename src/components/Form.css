@@ -1,0 +1,26 @@
+.admin-form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    letter-spacing: var(--spacing);
+}
+
+.admin-form h2 {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 95%;
+}
+
+.admin-input {
+    display: block;
+    margin-top: 1rem;
+    padding: .25rem;
+    background: var(--clr-grey-10);
+    font-family: inherit;
+    letter-spacing: var(--spacing);
+    width: 100%;
+}

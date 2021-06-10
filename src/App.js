@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Form from "./components/Form";
+import Table from "./components/Tables";
+
+import { useGlobalContext } from "./context/Context";
+import ButtonList from "./components/ButtonList";
 
 function App() {
+  const { isLoading } = useGlobalContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!isLoading && <h2>Page is loading...</h2>}
+      {isLoading && (
+        <div className="section-center">
+          <Form></Form>
+          <Table />
+          <ButtonList />
+        </div>
+      )}
+    </>
   );
 }
 
