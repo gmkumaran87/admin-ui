@@ -17,6 +17,13 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "LOADING":
             return {...state, isLoading: true };
+        case "ERROR":
+            return {
+                ...state,
+                isError: true,
+                isLoading: false,
+                errorMsg: action.payload,
+            };
         case "SHOW_INPUT":
             return {...state, inputValue: action.payload };
         case "LOAD_USERS":
