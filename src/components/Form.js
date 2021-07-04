@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Form.css";
 import { useGlobalContext } from "../context/Context";
 
@@ -28,7 +28,7 @@ function Form() {
   };
   return (
     <form className="admin-form" onSubmit={(e) => e.preventDefault()}>
-      <h2>Admin UI</h2>
+      <h2> Admin UI </h2>{" "}
       <div className="form-control">
         <input
           type="text"
@@ -37,7 +37,7 @@ function Form() {
           onChange={handleOnchange}
           placeholder="Search by name, email or role"
         />
-      </div>
+      </div>{" "}
     </form>
   );
 }

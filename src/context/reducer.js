@@ -46,29 +46,45 @@ const reducer = (state, action) => {
         case "SET_PAGE":
             return {...state, currPage: action.payload };
         case "REMOVE_ITEM":
-            console.log(`action.payload`, typeof action.payload, state.userList);
             const newItem = state.userList.filter((list) => {
                 return list.id !== action.payload;
             });
             return {...state, userList: newItem };
+
+        case "EDIT_ITEM":
+            const editItem = state.userList.filter(
+                (list) => list.id === action.payload
+            )[0];
+
+            return {...state, editUser: editItem };
+        case "UPDATE_USER":
+            const { id, name, email, role } = action.payload;
+            console.log(`object`, action.payload);
+            const updatedUsers = state.userList.map((item) => {
+                if (item.id === id) {
+                    return { id, name, email, role };
+                } else {
+                    return item;
+                }
+            });
+
+            return {...state, userList: updatedUsers };
         case "LOAD_SELECTED":
             const newSelected = [...state.selectedUser, action.payload];
-            console.log(`newSelected`, newSelected);
+
             return {...state, selectedUser: newSelected };
 
         case "UNLOAD_SELECTED":
             const unSelect = state.selectedUser.filter(
                 (user) => user !== action.payload
             );
-            console.log(`unSelect`, unSelect);
+
             return {
                 ...state,
                 selectedUser: unSelect,
             };
 
         case "REMOVE_SELECTED":
-            console.log(`state.selectedUser`, state.selectedUser);
-            console.log(`state.selectedUser`, state.userList);
             const removeSelected = state.userList.filter(
                 (el) => !state.selectedUser.includes(el.id)
             );

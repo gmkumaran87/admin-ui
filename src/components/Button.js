@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Button.css";
+
 import { useGlobalContext } from "../context/Context";
 
 function Button(props) {
-  const { handlePage, removeItem, removeSelected } = useGlobalContext();
+  const { handlePage, removeItem, removeSelected, editItem } =
+    useGlobalContext();
   const { id, children, text } = props;
 
   const classes = `btn ${props.className}`;
@@ -15,7 +17,16 @@ function Button(props) {
     handlePage(currEl);
 
     if (["edit", "delete"].includes(currEl)) {
-      removeItem(currId);
+      // If Edit button is clicked open the Form Modal
+      if (currEl === "edit") {
+        console.log(`currEl`, currEl, currId);
+        const modal = document.querySelector(".modal-outer");
+        modal.classList.add("open");
+
+        editItem(currId);
+      } else if (currEl === "delete") {
+        removeItem(currId);
+      }
     }
     if (currEl === "delete-selected") {
       console.log(`clicking Delete`);

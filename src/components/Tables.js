@@ -7,7 +7,6 @@ function Tables() {
   const { pagination, currPage, loadSelectedUsers } = useGlobalContext();
 
   const handleChange = (e) => {
-    console.log(`object`, e.currentTarget.checked);
     const checkAll = e.currentTarget.checked;
 
     for (let user of pagination[currPage]) {
@@ -22,7 +21,6 @@ function Tables() {
     }
   };
 
-  console.log(`pagination`, pagination, currPage);
   return (
     <div>
       <table className="user-table">
