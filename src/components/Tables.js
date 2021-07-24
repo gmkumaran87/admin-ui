@@ -5,7 +5,7 @@ import "./Table.css";
 
 function Tables() {
   const { pagination, currPage, loadSelectedUsers } = useGlobalContext();
-
+  //console.log(pagination);
   const handleChange = (e) => {
     const checkAll = e.currentTarget.checked;
 

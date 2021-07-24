@@ -55,3 +55,15 @@
 .delete-icon {
     color: red;
 }
+
+.editInput {
+    font-family: inherit;
+    padding: 2px;
+    width: fit-content;
+}
+
+.editInput:focus {
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}

@@ -1,13 +1,11 @@
 import Form from "./components/Form";
 import Table from "./components/Tables";
-import EditModal from "./components/EditModal";
 
 import { useGlobalContext } from "./context/Context";
 import ButtonList from "./components/ButtonList";
 
 function App() {
-  const { isLoading, pagination, isError, errorMsg, editUser } =
-    useGlobalContext();
+  const { isLoading, pagination, isError, errorMsg } = useGlobalContext();
   let content = "";
   let pages = 0;
 
@@ -39,7 +37,6 @@ function App() {
         {content}
         {!content && <Table />}
         {!content && <ButtonList />}
-        <EditModal item={editUser} />
       </div>
     </>
   );

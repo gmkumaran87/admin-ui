@@ -50,7 +50,6 @@ function Context({ children }) {
   }, [state.userList]);
 
   const filterUsers = (data) => {
-    // console.log(`data`, data);
     dispatch({ type: "FILTER_USERS", payload: data });
   };
   const selectAllUsersPage = (page) => {};
@@ -63,7 +62,9 @@ function Context({ children }) {
     }
   };
   const removeSelected = () => {
-    dispatch({ type: "REMOVE_SELECTED" });
+    const curentPage = state.currPage;
+
+    dispatch({ type: "REMOVE_SELECTED", payload: curentPage });
     const checkBoxAll = document.getElementById("checkBox-all");
     if (checkBoxAll.checked) checkBoxAll.checked = false;
   };
@@ -77,7 +78,7 @@ function Context({ children }) {
     switch (item) {
       case "next":
         let nextPage = 0;
-        console.log(`state.currPage`, pages.length, state.currPage);
+
         if (state.currPage === pages.length) {
           nextPage = 1;
         } else {
@@ -115,18 +116,18 @@ function Context({ children }) {
     dispatch({ type: "REMOVE_ITEM", payload: String(id) });
   };
 
-  const editItem = (id) => {
-    console.log(`id`, id);
-    dispatch({ type: "EDIT_ITEM", payload: String(id) });
+  const editItem = (userObj) => {
+    console.log(`id`, userObj);
+    dispatch({ type: "UPDATE_USER", payload: userObj });
   };
   const setInputValue = (value) => {
     dispatch({ type: "SHOW_INPUT", payload: value });
   };
 
-  const userEdit = (user) => {
+  /*const userEdit = (user) => {
     console.log(`user`, user);
     dispatch({ type: "UPDATE_USER", payload: user });
-  };
+  };*/
   return (
     <AppContext.Provider
       value={{
@@ -139,7 +140,6 @@ function Context({ children }) {
         selectAllUsersPage,
         filterUsers,
         setInputValue,
-        userEdit,
       }}
     >
       {" "}

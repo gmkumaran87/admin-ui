@@ -19,7 +19,7 @@ function ButtonList() {
   return (
     <div className="btn-container">
       <Button className="delete-btn" text="delete-selected" id={"deleteId"}>
-        Delete Selectedtext
+        Delete Selected
       </Button>
       <div className="page-container">
         <Button className="first-btn" text="first">

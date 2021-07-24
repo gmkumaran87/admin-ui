@@ -10,6 +10,7 @@ function TableList(props) {
   const handleClick = (e) => {
     loadSelectedUsers(e.currentTarget.value, e.currentTarget.checked);
   };
+
   return (
     <tr>
       <td>
@@ -18,14 +19,15 @@ function TableList(props) {
           value={id}
           id={`chckBox-${id}`}
           onChange={handleClick}
-        />
-      </td>
-      <td> {name} </td> <td> {email} </td> <td> {role} </td>
+        />{" "}
+      </td>{" "}
+      <td id={`rowName-${id}`}> {name} </td>
+      <td id={`rowEmail-${id}`}> {email} </td>
+      <td id={`rowRole-${id}`}> {role} </td>
       <td>
         <Button className="edit-btn icons" text="edit" id={id}>
           <FaEdit />
         </Button>
-
         <Button className="icons delete-icon" text="delete" id={id}>
           <FaTrash />
         </Button>

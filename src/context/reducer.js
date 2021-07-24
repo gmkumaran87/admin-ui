@@ -85,15 +85,23 @@ const reducer = (state, action) => {
             };
 
         case "REMOVE_SELECTED":
+            const lastPage = Object.keys(state.pagination).length;
+            //Setting the current page initially
+            let currentPage = action.payload;
+            // If the current page is the last page then after deleting the page
+            // currentPage set to previous page.
+            if (lastPage === action.payload) currentPage = lastPage - 1;
+
             const removeSelected = state.userList.filter(
                 (el) => !state.selectedUser.includes(el.id)
             );
-            console.log(`removeSelected`, removeSelected);
+
             return {
                 ...state,
                 userList: removeSelected,
                 selectedUser: [],
                 inputValue: "",
+                currPage: currentPage,
             };
         default:
             throw new Error("no matching action type");
