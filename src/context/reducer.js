@@ -1,6 +1,7 @@
 const NUM_PER_PAGE = 10;
 
 const reducer = (state, action) => {
+    // Setting the no of pages based on the Users list, it will return pages.
     const paginate = (data) => {
         const dataLength = data.length;
         const usersPerPage = Math.ceil(dataLength / NUM_PER_PAGE);
@@ -35,7 +36,7 @@ const reducer = (state, action) => {
             };
         case "FILTER_USERS":
             const filteredPages = paginate(action.payload);
-            console.log(`filteredPages`, filteredPages);
+
             return {
                 ...state,
                 filteredList: action.payload,

@@ -52,7 +52,6 @@ function Context({ children }) {
   const filterUsers = (data) => {
     dispatch({ type: "FILTER_USERS", payload: data });
   };
-  const selectAllUsersPage = (page) => {};
 
   const loadSelectedUsers = (id, checked) => {
     if (checked) {
@@ -136,7 +135,6 @@ function Context({ children }) {
         editItem,
         removeSelected,
         loadSelectedUsers,
-        selectAllUsersPage,
         filterUsers,
         setInputValue,
         updateUser,
