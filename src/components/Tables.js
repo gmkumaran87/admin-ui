@@ -2,24 +2,10 @@ import React from "react";
 import { useGlobalContext } from "../context/Context";
 import TableList from "./TableList";
 import "./Table.css";
+import CheckBox from "./CheckBox";
 
 function Tables() {
-  const { pagination, currPage, loadSelectedUsers } = useGlobalContext();
-  //console.log(pagination);
-  const handleChange = (e) => {
-    const checkAll = e.currentTarget.checked;
-
-    for (let user of pagination[currPage]) {
-      const checkBox = document.getElementById(`chckBox-${user.id}`);
-      if (checkAll) {
-        checkBox.checked = true;
-        loadSelectedUsers(checkBox.value, checkBox.checked);
-      } else {
-        checkBox.checked = false;
-        loadSelectedUsers(checkBox.value, checkBox.checked);
-      }
-    }
-  };
+  const { pagination, currPage } = useGlobalContext();
 
   return (
     <div>
@@ -27,12 +13,7 @@ function Tables() {
         <thead>
           <tr>
             <th>
-              <input
-                type="checkbox"
-                id="checkBox-all"
-                value="all"
-                onChange={handleChange}
-              />
+              <CheckBox id={"checkBox-all"} value={"all"} />
             </th>
             <th>Name</th>
             <th>Email</th>

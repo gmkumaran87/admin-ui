@@ -116,18 +116,17 @@ function Context({ children }) {
     dispatch({ type: "REMOVE_ITEM", payload: String(id) });
   };
 
-  const editItem = (userObj) => {
-    console.log(`id`, userObj);
-    dispatch({ type: "UPDATE_USER", payload: userObj });
+  const editItem = (userId) => {
+    dispatch({ type: "EDIT_ITEM", payload: userId });
   };
   const setInputValue = (value) => {
     dispatch({ type: "SHOW_INPUT", payload: value });
   };
 
-  /*const userEdit = (user) => {
-    console.log(`user`, user);
+  const updateUser = (user) => {
     dispatch({ type: "UPDATE_USER", payload: user });
-  };*/
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -140,10 +139,10 @@ function Context({ children }) {
         selectAllUsersPage,
         filterUsers,
         setInputValue,
+        updateUser,
       }}
     >
-      {" "}
-      {children}{" "}
+      {children}
     </AppContext.Provider>
   );
 }

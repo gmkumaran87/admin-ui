@@ -59,7 +59,7 @@ const reducer = (state, action) => {
             return {...state, editUser: editItem };
         case "UPDATE_USER":
             const { id, name, email, role } = action.payload;
-            console.log(`object`, action.payload);
+
             const updatedUsers = state.userList.map((item) => {
                 if (item.id === id) {
                     return { id, name, email, role };
@@ -68,7 +68,7 @@ const reducer = (state, action) => {
                 }
             });
 
-            return {...state, userList: updatedUsers };
+            return {...state, userList: updatedUsers, editUser: {} };
         case "LOAD_SELECTED":
             const newSelected = [...state.selectedUser, action.payload];
 

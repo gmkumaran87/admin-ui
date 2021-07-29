@@ -1,6 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import "./Button.css";
-import editUser from "./EditUser";
 
 import { useGlobalContext } from "../context/Context";
 
@@ -24,10 +23,8 @@ function Button(props) {
     if (["edit", "delete"].includes(currEl)) {
       // If Edit button is clicked Update the row
       if (currEl === "edit") {
-        const newUser = editUser(currId);
-        console.log(newUser);
         // Once the User PRESS ENTER save the input values to Arrays
-        editItem(newUser);
+        editItem(currId);
       } else if (currEl === "delete") {
         // Remove the corresponding row from the List
         removeItem(currId);

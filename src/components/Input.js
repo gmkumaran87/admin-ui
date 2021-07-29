@@ -1,21 +1,44 @@
 import React from "react";
-import { useRef } from "react";
+import { useState } from "react";
+import { useGlobalContext } from "../context/Context";
 
-const Input = ({ id, value }) => {
-  const inputRef = useRef();
+const Input = ({ id, idValue, value }) => {
+  const { updateUser } = useGlobalContext();
 
-  const newId = `nameEdit-${id}`;
+  const [name, setName] = useState(value);
 
-  console.log(id, value);
+  const handleChange = (e) => {
+    const input = e.target.value;
+    setName(input);
+  };
+
+  const keyPress = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    const [newName, newEmail, newRole] = [
+      document.getElementById(`nameEdit-${id}`),
+      document.getElementById(`emailEdit-${id}`),
+      document.getElementById(`roleEdit-${id}`),
+    ];
+    let newUser = { id: "", name: "", email: "", role: "" };
+
+    if (event.key === "Enter") {
+      newUser["id"] = id;
+      newUser["name"] = newName.value;
+      newUser["email"] = newEmail.value;
+      newUser["role"] = newRole.value;
+
+      updateUser(newUser);
+    }
+  };
   return (
     <>
       <input
-        ref={inputRef}
         type="text"
-        id={newId}
-        value={value}
+        id={idValue}
+        value={name}
         className="editInput"
         name="nameEdit"
+        onChange={handleChange}
+        onKeyDown={keyPress}
       />
     </>
   );

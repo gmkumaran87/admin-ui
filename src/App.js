@@ -35,6 +35,7 @@ function App() {
       <div className="section-center">
         <Form></Form>
         {content}
+
         {!content && <Table />}
         {!content && <ButtonList />}
       </div>
